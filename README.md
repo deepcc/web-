@@ -16,7 +16,6 @@
     - [2.5D 是通过什么来实现](2.5D是通过什么来实现)
     - [`职业规划及做了哪些准备`](职业规划及做了哪些准备)
 
-    ---
 
     - [常见排序算法的时间复杂度,空间复杂度](#常见排序算法的时间复杂度空间复杂度)
     - [前端需要注意哪些SEO](#前端需要注意哪些seo)
@@ -52,7 +51,7 @@
     - [stacking context,布局规则](#stacking-context布局规则)
     - [如何水平居中一个元素](#如何水平居中一个元素)
     - [如何竖直居中一个元素](#如何竖直居中一个元素)
-  - [$javascript概念部分](#$javascript概念部分)
+  - [$DOM部分](#DOM部分)
     - [DOM元素e的e.getAttribute(propName)和e.propName有什么区别和联系](#dom元素e的egetattributepropname和epropname有什么区别和联系)
     - [offsetWidth/offsetHeight,clientWidth/clientHeight与scrollWidth/scrollHeight的区别](#offsetwidthoffsetheightclientwidthclientheight与scrollwidthscrollheight的区别)
     - [XMLHttpRequest通用属性和方法](#xmlhttprequest通用属性和方法)
@@ -60,6 +59,7 @@
     - [mouseover/mouseout与mouseenter/mouseleave的区别与联系](#mouseovermouseout与mouseentermouseleave的区别与联系)
     - [sessionStorage,localStorage,cookie区别](#sessionstoragelocalstoragecookie区别)
     - [javascript跨域通信](#javascript跨域通信)
+  - [$javascript概念部分](javascript概念部分)
     - [javascript有哪几种数据类型](#javascript有哪几种数据类型)
     - [什么闭包,闭包有什么用](#什么闭包闭包有什么用)
     - [javascript有哪几种方法定义函数](#javascript有哪几种方法定义函数)
@@ -76,7 +76,7 @@
     - [函数内部arguments变量有哪些特性,有哪些属性,如何将它转换为数组](#函数内部arguments变量有哪些特性有哪些属性如何将它转换为数组)
     - [DOM事件模型是如何的,编写一个EventUtil工具类实现事件管理兼容](#dom事件模型是如何的编写一个eventutil工具类实现事件管理兼容)
     - [评价一下三种方法实现继承的优缺点,并改进](#评价一下三种方法实现继承的优缺点并改进)
-  - [$javascript编程部分](#$javascript编程部分)
+  - [$javascript编程部分](#javascript编程部分)
     - [请用原生js实现一个函数,给页面制定的任意一个元素添加一个透明遮罩(透明度可变,默认0.2),使这个区域点击无效,要求兼容IE8+及各主流浏览器,遮罩层效果如下图所示:](#请用原生js实现一个函数给页面制定的任意一个元素添加一个透明遮罩透明度可变默认02使这个区域点击无效要求兼容ie8及各主流浏览器遮罩层效果如下图所示)
     - [请用代码写出(今天是星期x)其中x表示当天是星期几,如果当天是星期一,输出应该是"今天是星期一"](#请用代码写出今天是星期x其中x表示当天是星期几如果当天是星期一输出应该是今天是星期一)
     - [下面这段代码想要循环延时输出结果0 1 2 3 4,请问输出结果是否正确,如果不正确,请说明为什么,并修改循环内的代码使其输出正确结果](#下面这段代码想要循环延时输出结果0-1-2-3-4请问输出结果是否正确如果不正确请说明为什么并修改循环内的代码使其输出正确结果)
@@ -1164,7 +1164,9 @@ z轴上的默认层叠顺序如下（从下到上）：
 ```
 
 
-## $javascript概念部分
+## DOM部分
+
+
 
 ### DOM元素e的e.getAttribute(propName)和e.propName有什么区别和联系
 
@@ -1288,7 +1290,15 @@ z轴上的默认层叠顺序如下（从下到上）：
 - 内部服务器代理请求跨域url，然后返回数据
 - 跨域请求数据，现代浏览器可使用HTML5规范的CORS功能，只要目标服务器返回HTTP头部**``Access-Control-Allow-Origin: *``**即可像普通ajax一样访问跨域资源
 
+## javascript概念部分
+
 ### javascript有哪几种数据类型
+js基本类型和引用类型
+- ECMAScript 有 5 种[原始类型](http://www.w3school.com.cn/js/pro_js_primitivetypes.asp)（primitive type），即 Undefined、Null、Boolean、Number 和 String。
+- [引用类型](http://www.w3school.com.cn/js/pro_js_referencetypes.asp)通常叫做类（class）: 对象是由 `new` 运算符加上要实例化的对象的名字创建的。
+``` javascript
+var o = new Object();
+```
 六种基本数据类型
 
 - undefined
@@ -1407,8 +1417,8 @@ document.cookie = 'name=aaa; path=/; domain=domain; secure';
 
 ### ==运算符判断相等的流程是怎样的
 
-1. 如果两个值类型相同，按照===比较方法进行比较
-2. 如果类型不同，使用如下规则进行比较
+- 如果两个值类型相同，按照===比较方法进行比较
+- 如果类型不同，使用如下规则进行比较
   1. 如果其中一个值是null，另一个是undefined，它们相等
   2. 如果一个值是**数字**另一个是**字符串**，将**字符串转换为数字**进行比较
   3. 如果有布尔类型，将**true转换为1，false转换为0**，然后用==规则继续比较
