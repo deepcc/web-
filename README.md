@@ -778,22 +778,22 @@ html[xmlns*=""]:root #trece  { color: red  }
 
 ``block``元素特点：
 
-1.处于常规流中时，如果``width``没有设置，会自动填充满父容器
-2.可以应用``margin/padding``
-3.在没有设置高度的情况下会扩展高度以包含常规流中的子元素
-4.处于常规流中时布局时在前后元素位置之间（独占一个水平空间）
-5.忽略``vertical-align``
+1. 处于常规流中时，如果``width``没有设置，会自动填充满父容器
+2. 可以应用``margin/padding``
+3. 在没有设置高度的情况下会扩展高度以包含常规流中的子元素
+4. 处于常规流中时布局时在前后元素位置之间（独占一个水平空间）
+5. 忽略``vertical-align``
 
 ``inline``元素特点
 
-1.水平方向上根据``direction``依次布局
-2.不会在元素前后进行换行
-3.受``white-space``控制
-4.``margin/padding``在竖直方向上无效，水平方向上有效
-5.``width/height``属性对非替换行内元素无效，宽度由元素内容决定
-6.非替换行内元素的行框高由``line-height``确定，替换行内元素的行框高由``height``,``margin``,``padding``,``border``决定
-6.浮动或绝对定位时会转换为``block``
-7.``vertical-align``属性生效
+1. 水平方向上根据``direction``依次布局
+2. 不会在元素前后进行换行
+3. 受``white-space``控制
+4. ``margin/padding``在竖直方向上无效，水平方向上有效
+5. ``width/height``属性对非替换行内元素无效，宽度由元素内容决定
+6. 非替换行内元素的行框高由``line-height``确定，替换行内元素的行框高由``height``,``margin``,``padding``,``border``决定
+6. 浮动或绝对定位时会转换为``block``
+7. ``vertical-align``属性生效
 
 
 
@@ -834,10 +834,10 @@ html[xmlns*=""]:root #trece  { color: red  }
   +  [text-indent](https://developer.mozilla.org/en-US/docs/Web/CSS/text-indent)
   +  [text-transform](https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform)
   +  [text-shadow](https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow)
-- [line-height](https://developer.mozilla.org/en-US/docs/Web/CSS/line-height)
-- [color](https://developer.mozilla.org/en-US/docs/Web/CSS/color)
-- [visibility](https://developer.mozilla.org/en-US/docs/Web/CSS/visibility)
-- [cursor](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor)
+  - [line-height](https://developer.mozilla.org/en-US/docs/Web/CSS/line-height)
+  - [color](https://developer.mozilla.org/en-US/docs/Web/CSS/color)
+  - [visibility](https://developer.mozilla.org/en-US/docs/Web/CSS/visibility)
+  - [cursor](https://developer.mozilla.org/en-US/docs/Web/CSS/cursor)
 
 
 
@@ -857,7 +857,7 @@ html[xmlns*=""]:root #trece  { color: red  }
 
 - 未定位父元素``overflow: auto;``，包含``position: relative;``子元素，子元素高于父元素时会溢出。解决办法：1）子元素去掉``position: relative;``; 2）不能为子元素去掉定位时，父元素``position: relative;``
 
-```
+``` html
 <style type="text/css">
 .outer {
     width: 215px;
@@ -881,7 +881,7 @@ html[xmlns*=""]:root #trece  { color: red  }
 
 - IE6只支持``a``标签的``:hover``伪类，解决方法：使用js为元素监听mouseenter，mouseleave事件，添加类实现效果：
 
-```
+``` html
 <style type="text/css">
 .p:hover,
 .hover {
@@ -919,7 +919,7 @@ if (target.attachEvent) {
 
 - IE5-8不支持``opacity``，解决办法：
 
-```
+``` css
 .opacity {
     opacity: 0.4
     filter: alpha(opacity=60); /* for IE5-7 */
@@ -931,7 +931,7 @@ if (target.attachEvent) {
 - IE6不支持PNG透明背景，解决办法: **IE6下使用gif图片**
 - IE6-7不支持``display: inline-block``解决办法：设置inline并触发hasLayout
 
-```
+```css
     display: inline-block;
     *display: inline;
     *zoom: 1;
@@ -948,7 +948,7 @@ if (target.attachEvent) {
 2. 父元素触发块级格式化上下文(见块级可视化上下文部分)
 3. 设置容器元素伪元素进行清理[推荐的清理浮动方法](http://nicolasgallagher.com/micro-clearfix-hack/)
 
-```
+```css
 /**
 * 在标准浏览器下使用
 * 1 content内容为空格用于修复opera下文档中出现
