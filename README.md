@@ -462,7 +462,7 @@ name=qiu&age=25
 4. 最后是一个可能的**消息实体**
 响应报文例子如下：
 
-```
+```c
 HTTP/1.1 200 OK
 Date: Tue, 08 Jul 2014 05:28:43 GMT
 Server: Apache/2
@@ -661,7 +661,7 @@ Content-Type: text/html; charset=iso-8859-1
 
 - IE条件注释：适用于[IE5, IE9]常见格式如下
 
-```
+```html
 <!--[if IE 6]>
 Special instructions for IE 6 here
 <![endif]-->
@@ -669,7 +669,7 @@ Special instructions for IE 6 here
 
 - 选择器hack：不同浏览器对选择器的支持不一样
 
-```
+```css
 /***** Selector Hacks ******/
 
 /* IE6 and below */
@@ -727,7 +727,7 @@ html[xmlns*=""]:root #trece  { color: red  }
 
 - 属性hack：不同浏览器解析bug或方法
 
-```
+```css
 /* IE6 */
 #once { _color: blue }
 
@@ -1045,7 +1045,7 @@ z轴上的默认层叠顺序如下（从下到上）：
 - 如果需要居中的元素为**常规流中inline元素**，为父元素设置`text-align: center;`即可实现
 - 如果需要居中的元素为**常规流中block元素**，1）为元素设置宽度，2）设置左右margin为auto。3）IE6下需在父元素上设置`text-align: center;`,再给子元素恢复需要的值
 
-```
+```html
 <body>
     <div class="content">
     aaaaaa aaaaaa a a a a a a a a
@@ -1069,7 +1069,7 @@ z轴上的默认层叠顺序如下（从下到上）：
 
 - 如果需要居中的元素为**浮动元素**，1）为元素设置宽度，2）`position: relative;`，3）浮动方向偏移量（left或者right）设置为50%，4）浮动方向上的margin设置为元素宽度一半乘以-1
 
-```
+```html
 <body>
     <div class="content">
     aaaaaa aaaaaa a a a a a a a a
@@ -1095,7 +1095,7 @@ z轴上的默认层叠顺序如下（从下到上）：
 
 - 如果需要居中的元素为**绝对定位元素**，1）为元素设置宽度，2）偏移量设置为50%，3）偏移方向外边距设置为元素宽度一半乘以-1
 
-```
+```html
 <body>
     <div class="content">
     aaaaaa aaaaaa a a a a a a a a
@@ -1121,7 +1121,7 @@ z轴上的默认层叠顺序如下（从下到上）：
 
 - 如果需要居中的元素为**绝对定位元素**，1）为元素设置宽度，2）设置左右偏移量都为0,3）设置左右外边距都为auto
 
-```
+```html
 <body>
     <div class="content">
     aaaaaa aaaaaa a a a a a a a a
@@ -1151,7 +1151,7 @@ z轴上的默认层叠顺序如下（从下到上）：
 
 - 需要居中元素为**单行文本**，为包含文本的元素设置大于`font-size`的`line-height`：
 
-```
+```html
 <p class="text">center text</p>
 
 <style>
@@ -1224,7 +1224,7 @@ z轴上的默认层叠顺序如下（从下到上）：
 3. 标准事件模型中event.target表示发生移入/出的元素,**vent.relatedTarget**对应移出/如元素；在老IE中event.srcElement表示发生移入/出的元素，**event.toElement**表示移出的目标元素，**event.fromElement**表示移入时的来源元素
 
 例子：鼠标从div#target元素移出时进行处理，判断逻辑如下：
-
+```html
     <div id="target"><span>test</span></div>
 
     <script type="text/javascript">
@@ -1261,7 +1261,7 @@ z轴上的默认层叠顺序如下（从下到上）：
 
     }
     </script>
-
+```
 ### sessionStorage,localStorage,cookie区别
 
 1. 都会在浏览器端保存，有大小限制，同源限制
@@ -1358,7 +1358,7 @@ cgi/
 - 同源文档可以读取并修改localStorage数据，sessionStorage只允许同一个窗口下的文档访问，如通过iframe引入的同源文档。
 - Storage对象通常被当做普通javascript对象使用：**通过设置属性来存取字符串值**，也可以通过**setItem(key, value)设置**，**getItem(key)读取**，**removeItem(key)删除**，**clear()删除所有数据**，**length表示已存储的数据项数目**，**key(index)返回对应索引的key**
 
-```
+```js
 localStorage.setItem('x', 1); // storge x->1
 localStorage.getItem('x); // return value of x
 
@@ -1464,7 +1464,7 @@ document.cookie = 'name=aaa; path=/; domain=domain; secure';
 - 老版本IE事件监听elem.attachEvent('on'+type, handler)/elem.detachEvent('on'+type, handler)：handler不接收event作为参数，事件信息保存在window.event中，触发事件的对象为event.srcElement，handler执行上下文this为window使用闭包中调用handler.call(elem, event)可模仿标准模型，然后返回闭包，保证了监听器的移除。event.returnValue为false时取消事件默认行为，event.cancleBubble为true时取消时间传播
 - 通常利用事件冒泡机制托管事件处理程序提高程序性能。
 
-```
+```js
 /**
  * 跨浏览器事件处理工具。只支持冒泡。不支持捕获
  * @author  (qiu_deqing@126.com)
@@ -1533,7 +1533,7 @@ var EventUtil = {
 
 ### 评价一下三种方法实现继承的优缺点,并改进
 
-```
+```js
 function Shape() {}
 
 function Rect() {}
@@ -1601,7 +1601,7 @@ function create(obj) {
 ### 请用原生js实现一个函数,给页面制定的任意一个元素添加一个透明遮罩(透明度可变,默认0.2),使这个区域点击无效,要求兼容IE8+及各主流浏览器,遮罩层效果如下图所示:
 ![遮罩效果](img/element-mask.jpg)
 
-```
+```html
 <style>
 #target {
     width: 200px;
@@ -1649,7 +1649,7 @@ target.addEventListener('click', function () {
 
 ### 请用代码写出(今天是星期x)其中x表示当天是星期几,如果当天是星期一,输出应该是"今天是星期一"
 
-```
+```js
 var days = ['日','一','二','三','四','五','六'];
 var date = new Date();
 
@@ -1658,7 +1658,7 @@ console.log('今天是星期' + days[date.getDay()]);
 
 ### 下面这段代码想要循环延时输出结果0 1 2 3 4,请问输出结果是否正确,如果不正确,请说明为什么,并修改循环内的代码使其输出正确结果
 
-```
+```js
 for (var i = 0; i < 5; ++i) {
   setTimeout(function () {
     console.log(i + ' ');
@@ -1669,7 +1669,7 @@ for (var i = 0; i < 5; ++i) {
 不能输出正确结果，因为循环中setTimeout接受的参数函数通过闭包访问变量i。javascript运行环境为单线程，setTimeout注册的函数需要等待线程空闲才能执行，此时for循环已经结束，i值为5.五个定时输出都是5
 修改方法：将setTimeout放在函数立即调用表达式中，将i值作为参数传递给包裹函数，创建新闭包
 
-```
+```js
 for (var i = 0; i < 5; ++i) {
   (function (i) {
     setTimeout(function () {
@@ -1683,7 +1683,7 @@ for (var i = 0; i < 5; ++i) {
 
 ### 现有一个Page类,其原型对象上有许多以post开头的方法(如postMsg);另有一拦截函数chekc,只返回ture或false.请设计一个函数,该函数应批量改造原Page的postXXX方法,在保留其原有功能的同时,为每个postXXX方法增加拦截验证功能,当chekc返回true时继续执行原postXXX方法,返回false时不再执行原postXXX方法
 
-```
+```js
 function Page() {}
 
 Page.prototype = {
@@ -1731,7 +1731,7 @@ obj.postC('checkfy');
 ![xxx](img/tip-box.jpg)
 
 ### 编写javascript深度克隆函数deepClone
-
+```js
     function deepClone(obj) {
         var _toString = Object.prototype.toString;
 
@@ -1786,8 +1786,9 @@ obj.postC('checkfy');
     var b = deepClone(c);
     console.log(c.a === b.a);
     console.log(c, b);
-
+```
 ### 补充代码,鼠标单击Button1后将Button1移动到Button2的后面
+```html
     <!doctype html>
     <html>
     <head>
@@ -1827,9 +1828,9 @@ obj.postC('checkfy');
     </script>
     </body>
     </html>
-
+```
 ### 网页中实现一个计算当年还剩多少时间的倒数计时程序,要求网页上实时动态显示"××年还剩××天××时××分××秒"
-
+```html
     <!doctype html>
     <html>
     <head>
@@ -1887,11 +1888,12 @@ obj.postC('checkfy');
 
     </body>
     </html>
-
+```
 ### 完成一个函数,接受数组作为参数,数组元素为整数或者数组,数组元素包含整数或数组,函数返回扁平化后的数组
+
 如：[1, [2, [ [3, 4], 5], 6]] => [1, 2, 3, 4, 5, 6]
 
-```
+```js
     var data =  [1, [2, [ [3, 4], 5], 6]];
 
     function flat(data, result) {
@@ -1915,7 +1917,7 @@ obj.postC('checkfy');
 ### 如何判断一个对象是否为数组
 如果浏览器支持Array.isArray()可以直接判断否则需进行必要判断
 
-```
+```js
 /**
  * 判断一个对象是否是数组，参数不是对象或者不是数组，返回false
  *
@@ -1932,7 +1934,7 @@ function isArray(arg) {
 
 ### 请评价以下事件监听器代码并给出改进意见
 
-```
+```js
 if (window.addEventListener) {
   var addListener = function (el, type, listener, useCapture) {
     el.addEventListener(type, listener, useCapture);
@@ -1964,7 +1966,7 @@ else if (document.all) {
 
 改进:
 
-```
+```js
 var addListener;
 
 if (window.addEventListener) {
@@ -1991,7 +1993,7 @@ else if (window.attachEvent) {
 
 ### 如何判断一个对象是否为函数
 
-```
+```js
 /**
  * 判断对象是否为函数，如果当前运行环境对可调用对象（如正则表达式）
  * 的typeof返回'function'，采用通用方法，否则采用优化方法
@@ -2013,7 +2015,7 @@ function isFunction(arg) {
 
 ### 编写一个函数接受url中query string为参数,返回解析后的Object,query string使用application/x-www-form-urlencoded编码
 
-```
+```js
 /**
  * 解析query string转换为对象，一个key有多个值时生成数组
  *
@@ -2077,7 +2079,7 @@ console.log(parseQuery('sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8'));
 
 ### 解析一个完整的url,返回Object包含域与window.location相同
 
-```
+```js
 /**
  * 解析一个url并生成window.location对象中包含的域
  * location:
@@ -2119,7 +2121,7 @@ function parseUrl(url) {
 
 ### 完成函数getViewportSize返回指定窗口的视口尺寸
 
-```
+```js
 /**
 * 查询指定窗口的视口尺寸，如果不指定窗口，查询当前窗口尺寸
 **/
@@ -2152,7 +2154,7 @@ function getViewportSize(w) {
 ```
 
 ### 完成函数getScrollOffset返回窗口滚动条偏移量
-
+```js
     /**
      * 获取指定window中滚动条的偏移量，如未指定则获取当前window
      * 滚动条偏移量
@@ -2184,10 +2186,10 @@ function getViewportSize(w) {
             y: d.body.scrollTop
         };
     }
-
+```
 
 ### 现有一个字符串richText,是一段富文本,需要显示在页面上.有个要求,需要给其中只包含一个img元素的p标签增加一个叫pic的class.请编写代码实现.可以使用jQuery或KISSY.
-
+```js
     function richText(text) {
         var div = document.createElement('div');
         div.innerHTML = text;
@@ -2202,10 +2204,10 @@ function getViewportSize(w) {
 
         return div.innerHTML;
     }
-
+```
 ### 请实现一个Event类,继承自此类的对象都会拥有两个方法on,off,once和trigger
 
-
+```js
     function Event() {
         if (!(this instanceof Event)) {
             return new Event();
@@ -2254,10 +2256,10 @@ function getViewportSize(w) {
         this.on(type, wrapper);
         return this;
     };
-
+```
 ### 编写一个函数将列表子元素顺序反转
 
-```
+```html
 <ul id="target">
     <li>1</li>
     <li>2</li>
@@ -2279,7 +2281,7 @@ function getViewportSize(w) {
 
 ### 以下函数的作用是?空白区域应该填写什么
 
-```
+```js
 // define
 (function (window) {
     function fn(str) {
@@ -2311,7 +2313,7 @@ define部分定义一个简单的模板类，使用{}作为转义标记，中间
 
 ### 编写一个函数实现form的序列化(即将一个表单中的键值序列化为可提交的字符串)
 
-
+```html
     <form id="target">
         <select name="age">
             <option value="aaa">aaa</option>
@@ -2402,19 +2404,20 @@ define部分定义一个简单的模板类，使用{}作为转义标记，中间
     var form = document.getElementById('target');
     console.log(serializeForm(form));
     </script>
-
+```
 ### 使用原生javascript给下面列表中的li节点绑定点击事件,点击时创建一个Object对象,兼容IE和标准浏览器
 
-```
+```html
 <ul id="nav">
     <li><a href="http://11111">111</a></li>
     <li><a href="http://2222">222</a></li>
     <li><a href="http://333">333</a></li>
     <li><a href="http://444">444</a></li>
 </ul>
+```
 
-Object:
-{
+```js
+Object:{
     "index": 1,
     "name": "111",
     "link": "http://1111"
@@ -2423,7 +2426,7 @@ Object:
 
 script:
 
-```
+```js
 var EventUtil = {
     getEvent: function (event) {
         return event || window.event;
@@ -2506,7 +2509,7 @@ EventUtil.on(nav, 'click', function (event) {
 
 ### 有一个大数组,var a = ['1', '2', '3', ...];a的长度是100,内容填充随机整数的字符串.请先构造此数组a,然后设计一个算法将其内容去重
 
-```
+```js
     /**
     * 数组去重
     **/
